@@ -1,0 +1,23 @@
+---
+- name: ensure apache is at the latest version
+  yum: 
+    name=httpd 
+    state=latest
+
+- name: ensure firewall is at the latest version
+  yum:
+    name=firewalld
+    state=latest    
+    
+#- name: enable http in firewall
+#  firewalld:
+#    port: 80
+#    permanent: yes
+#    immediate: yes
+#    state: enabled
+        
+- name: ensure apache is running (and enable it at boot)
+  service: 
+    name=httpd 
+    state=started 
+    enabled=yes
